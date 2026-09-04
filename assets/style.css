@@ -1,0 +1,188 @@
+/* Peppermint Academy — shared styles
+   Palette: charcoal base, peppermint green accent, warm paper for content panels
+*/
+
+:root {
+  --ink: #1b2320;
+  --charcoal: #212b27;
+  --charcoal-light: #2c3833;
+  --paper: #f6f4ef;
+  --paper-dim: #eae7de;
+  --mint: #3aa876;
+  --mint-deep: #257a54;
+  --line: #3d4a44;
+  --line-light: #d8d3c6;
+  --max-width: 920px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+a { color: var(--mint-deep); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--mint-deep); outline-offset: 3px; }
+
+.site-header {
+  background: var(--charcoal);
+  color: var(--paper);
+  padding: 2.5rem 1.5rem 2rem;
+}
+
+.site-header .wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.brand .mark {
+  color: var(--mint);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.brand h1 {
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  font-size: 1.9rem;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.tagline {
+  color: #b9c2bd;
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+}
+
+.breadcrumb {
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.85rem;
+  color: #9fada6;
+  margin-top: 1rem;
+}
+.breadcrumb a { color: #cfe0d8; }
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+.intro {
+  max-width: 62ch;
+  font-size: 1.05rem;
+  color: #3a423e;
+  margin-bottom: 2.5rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1px;
+  background: var(--line-light);
+  border: 1px solid var(--line-light);
+}
+
+.product-card {
+  background: var(--paper);
+  padding: 1.4rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: background 0.15s ease;
+}
+
+.product-card:hover { background: var(--paper-dim); }
+
+.product-card .code {
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--mint-deep);
+  text-transform: uppercase;
+}
+
+.product-card h3 {
+  margin: 0.1rem 0 0.2rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.product-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #5a615c;
+}
+
+.product-card a.stretched {
+  position: absolute;
+  inset: 0;
+}
+.product-card { position: relative; }
+
+.section-title {
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6d766f;
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.doc-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.doc-link {
+  display: block;
+  border: 1px solid var(--line-light);
+  padding: 1rem 1.1rem;
+  background: var(--paper);
+}
+
+.doc-link:hover { border-color: var(--mint-deep); background: var(--paper-dim); text-decoration: none; }
+
+.doc-link .kind {
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mint-deep);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.empty-note {
+  font-size: 0.9rem;
+  color: #838a85;
+  font-style: italic;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line-light);
+  padding: 1.5rem;
+  text-align: center;
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  color: #8a9088;
+}
