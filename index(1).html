@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peppermint Academy — Sign In</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2FC6C1;
+    --teal-dark: #1E9C98;
+    --charcoal: #1F2628;
+    --charcoal-soft: #2B3436;
+    --paper: #F6F8F8;
+    --mist: #C9D2D3;
+    --error: #E4573D;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background: var(--charcoal);
+  }
+
+  body {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .bg {
+    position: fixed;
+    inset: 0;
+    background-image: url('robots-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    z-index: 0;
+  }
+
+  .bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(20, 26, 27, 0.94) 0%,
+      rgba(20, 26, 27, 0.75) 32%,
+      rgba(20, 26, 27, 0.15) 58%,
+      rgba(20, 26, 27, 0.02) 72%
+    );
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 6vw;
+    display: flex;
+    align-items: center;
+  }
+
+  .panel {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .eyebrow .mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .eyebrow .mark svg { width: 15px; height: 15px; }
+
+  .eyebrow span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--paper);
+    letter-spacing: 0.01em;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1.15;
+    color: var(--paper);
+    margin-bottom: 10px;
+  }
+
+  .sub {
+    font-size: 15px;
+    color: var(--mist);
+    line-height: 1.5;
+    margin-bottom: 36px;
+    max-width: 320px;
+  }
+
+  form { display: flex; flex-direction: column; gap: 18px; }
+
+  .field label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--mist);
+    margin-bottom: 7px;
+  }
+
+  .field input {
+    width: 100%;
+    padding: 13px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    outline: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .field input::placeholder { color: rgba(201, 210, 211, 0.45); }
+
+  .field input:focus {
+    border-color: var(--teal);
+    background: rgba(255, 255, 255, 0.09);
+  }
+
+  .field input.invalid { border-color: var(--error); }
+
+  .error-msg {
+    font-size: 13px;
+    color: #FF8A72;
+    min-height: 18px;
+    margin-top: -4px;
+  }
+
+  button {
+    margin-top: 6px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--teal);
+    color: #0F2624;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.05s ease;
+  }
+
+  button:hover { background: var(--teal-dark); color: var(--paper); }
+  button:active { transform: scale(0.99); }
+
+  .foot {
+    margin-top: 28px;
+    font-size: 12.5px;
+    color: rgba(201, 210, 211, 0.55);
+  }
+
+  @media (max-width: 640px) {
+    .bg::after {
+      background: linear-gradient(
+        180deg,
+        rgba(20, 26, 27, 0.55) 0%,
+        rgba(20, 26, 27, 0.94) 55%,
+        rgba(20, 26, 27, 0.97) 100%
+      );
+    }
+    .wrap { padding: 0 24px; align-items: flex-end; padding-bottom: 56px; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="bg"></div>
+
+  <div class="wrap">
+    <div class="panel">
+      <div class="eyebrow">
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C7 6 5 10 5 14C5 18.4 8.1 22 12 22C15.9 22 19 18.4 19 14C19 10 17 6 12 2Z" fill="#12302E"/>
+          </svg>
+        </span>
+        <span>PEPPERMINT ACADEMY</span>
+      </div>
+
+      <h1>Welcome back</h1>
+      <p class="sub">Sign in to access product manuals, service guides, and training videos.</p>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your username" autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+        </div>
+        <div class="error-msg" id="errorMsg"></div>
+        <button type="submit">Sign in</button>
+      </form>
+
+      <p class="foot">Peppermint Robotics · Internal documentation</p>
+    </div>
+  </div>
+
+  <script>
+    // Display-only gate — not real security. Anyone viewing page source
+    // can see the credentials below. Do not use this to protect sensitive data.
+    const VALID_USERNAME = "Techops";
+    const VALID_PASSWORD = "Ppmt@1234";
+
+    const form = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+    const userInput = document.getElementById('username');
+    const passInput = document.getElementById('password');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const u = userInput.value.trim();
+      const p = passInput.value;
+
+      if (u === VALID_USERNAME && p === VALID_PASSWORD) {
+        sessionStorage.setItem('ppmt_academy_auth', 'true');
+        window.location.href = 'home.html';
+      } else {
+        errorMsg.textContent = 'Incorrect username or password.';
+        userInput.classList.add('invalid');
+        passInput.classList.add('invalid');
+      }
+    });
+
+    [userInput, passInput].forEach(el => {
+      el.addEventListener('input', () => {
+        el.classList.remove('invalid');
+        errorMsg.textContent = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
