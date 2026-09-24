@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMR · Peppermint Academy</title>
+<title>AMR &middot; Peppermint Academy</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body>
+<body data-slug="amr">
 
 <header class="site-header">
   <div class="wrap">
@@ -20,37 +20,116 @@
 </header>
 
 <main>
-  <div class="section-title">User Documentation</div>
-  <div class="doc-links">
-    <a class="doc-link" href="user/">
-      <span class="kind">Folder</span>
-      Operating &amp; setup guides
+  <p class="intro">Everything a technician needs for AMR &mdash; organized by category. Pick a folder below to open its Drive documents.</p>
+  <div class="product-grid">
+    <a class="product-card no-link" data-category="Product Overview" href="#">
+      <h3>Product Overview</h3>
     </a>
-  </div>
-  <p class="empty-note">Add PDFs or pages to the <code>amr/user/</code> folder — they'll show up here.</p>
-
-  <div class="section-title">Service Documentation</div>
-  <div class="doc-links">
-    <a class="doc-link" href="service/">
-      <span class="kind">Folder</span>
-      Maintenance &amp; repair guides
+    <a class="product-card no-link" data-category="Product Specifications" href="#">
+      <h3>Product Specifications</h3>
     </a>
-  </div>
-  <p class="empty-note">Add files to <code>amr/service/</code> as they're written.</p>
-
-  <div class="section-title">Videos</div>
-  <div class="doc-links">
-    <a class="doc-link" href="videos/">
-      <span class="kind">Folder</span>
-      Training &amp; walkthrough videos
+    <a class="product-card no-link" data-category="Renders" href="#">
+      <h3>Renders</h3>
     </a>
+    <a class="product-card no-link" data-category="Sales PPT" href="#">
+      <h3>Sales PPT</h3>
+    </a>
+    <a class="product-card no-link" data-category="Operation Guide" href="#">
+      <h3>Operation Guide</h3>
+    </a>
+    <a class="product-card no-link" data-category="Videos" href="#">
+      <h3>Videos</h3>
+    </a>
+    <a class="product-card no-link" data-category="User Manual" href="#">
+      <h3>User Manual</h3>
+    </a>
+    <a class="product-card no-link" data-category="Training" href="#">
+      <h3>Training</h3>
+    </a>
+    <a class="product-card no-link" data-category="SOP" href="#">
+      <h3>SOP</h3>
+    </a>
+    <a class="product-card no-link" data-category="Installation & Deployment" href="#">
+      <h3>Installation & Deployment</h3>
+    </a>
+    <a class="product-card no-link" data-category="Deployment Case Studies" href="#">
+      <h3>Deployment Case Studies</h3>
+    </a>
+    <a class="product-card no-link" data-category="Hardware & Architecture (Electronics)" href="#">
+      <h3>Hardware & Architecture (Electronics)</h3>
+    </a>
+    <a class="product-card no-link" data-category="Part Manual" href="#">
+      <h3>Part Manual</h3>
+    </a>
+    <a class="product-card no-link" data-category="Service Manual" href="#">
+      <h3>Service Manual</h3>
+    </a>
+    <a class="product-card no-link" data-category="Maintenance" href="#">
+      <h3>Maintenance</h3>
+    </a>
+    <a class="product-card no-link" data-category="PM" href="#">
+      <h3>PM</h3>
+    </a>
+    <a class="product-card no-link" data-category="Software & Firmware" href="#">
+      <h3>Software & Firmware</h3>
+    </a>
+    <a class="product-card no-link" data-category="Release Notes" href="#">
+      <h3>Release Notes</h3>
+    </a>
+    <a class="product-card no-link" data-category="Change Log - Engineering Changes" href="#">
+      <h3>Change Log - Engineering Changes</h3>
+    </a>
+    <a class="product-card no-link" data-category="Known Issues" href="#">
+      <h3>Known Issues</h3>
+    </a>
+    <a class="product-card no-link" data-category="FAQ" href="#">
+      <h3>FAQ</h3>
+    </a>
+    <a class="product-card no-link" data-category="Troubleshooting / FAQ ⭐" href="#">
+      <h3>Troubleshooting / FAQ ⭐</h3>
+    </a>
+    <a class="product-card no-link" data-category="Risk Assessments" href="#">
+      <h3>Risk Assessments</h3>
+    </a>
+    <a class="product-card no-link" data-category="Certifications" href="#">
+      <h3>Certifications</h3>
+    </a>
+    <a class="product-card no-link" data-category="CMC-AMC" href="#">
+      <h3>CMC-AMC</h3>
+    </a>
+    <a class="product-card no-link" data-category="Contact - Escalation Matrix" href="#">
+      <h3>Contact - Escalation Matrix</h3>
+    </a>
+    <div class="product-card coming-soon">
+      <h3>Coming Soon</h3>
+    </div>
   </div>
-  <p class="empty-note">Add video files or links to <code>amr/videos/</code> as they're recorded.</p>
+  <p class="empty-note">Greyed-out folders have no Drive link yet &mdash; add it in <code>assets/links.json</code> and the card lights up automatically.</p>
 </main>
 
 <footer class="site-footer">
   Peppermint Academy &middot; internal product documentation
 </footer>
+
+  <script>
+    fetch('../assets/links.json')
+      .then(r => r.json())
+      .then(data => {
+        const slugLinks = data[document.body.dataset.slug] || {};
+        document.querySelectorAll('.product-card').forEach(a => {
+          const url = slugLinks[a.dataset.category];
+          if (url) {
+            a.href = url;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.classList.remove('no-link');
+          } else if (a.dataset.category) {
+            a.addEventListener('click', e => e.preventDefault());
+          }
+        });
+      })
+      .catch(() => {});
+  </script>
 
 </body>
 </html>
